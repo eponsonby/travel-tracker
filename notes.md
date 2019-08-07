@@ -1,0 +1,10 @@
+- User should be able to sign up
+- User should be able to log in
+- User should be able to log out
+- Logged in user should be able to see all trips by all users
+- Logged in user should be able to see all trips that belong to them
+- Logged in user should be able to see a single trip
+- Logged in user should be able to create a new trip
+- Logged in user should be able to edit an existing trip
+- Logged in user should be able to delete a trip
+- Logged in user should be able to add trip highlights to a trip

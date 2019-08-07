@@ -28,13 +28,12 @@ class SessionsController < ApplicationController
     end
 
     post '/signup' do
-        user = User.new(:first_name => params[:first_name], :last_name => params[:last_name], :username => params[:username], :email => params[:email], :password => params[:password])
-        if user.save && !user.username.empty? && !user.email.empty?
-            session[:user_id] = user.id
-            user.save
-            redirect to("/trips")
+        @user = User.create(:first_name => params[:first_name], :last_name => params[:last_name], :username => params[:username], :email => params[:email], :password => params[:password])
+        if @user.errors.any?
+            erb :'sessions/signup'
         else
-            redirect to("/signup")
+            session[:user_id] = @user.id
+            redirect '/trips'
         end
     end
 
