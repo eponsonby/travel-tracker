@@ -1,6 +1,7 @@
 - User should be able to sign up
 - User should be able to log in
 - User should be able to log out
+    - Logout should be a link that redirects to the homepage, not a button
 - Logged in user should be able to see all trips by all users
 - Logged in user should be able to see all trips that belong to them
 - Logged in user should be able to see a single trip

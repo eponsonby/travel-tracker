@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_08_06_193336) do
     t.string "country"
     t.string "city"
     t.string "date_visited"
-    t.string "type"
+    t.string "category"
     t.integer "user_id"
   end
 

@@ -1,4 +1,4 @@
-<% @trips.each do |trip| %>
+<% current_user.trips.each do |trip| %>
     <p><%= trip.country %></p>
     <p><%= trip.city %></p>
     <p><%= trip.date_visited %></p>
@@ -7,6 +7,5 @@
         <p><%= highlight.category %></p>
         <p><%= highlight.place %></p>
     <% end %>
-
 
 <% end %>

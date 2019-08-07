@@ -1,8 +1,12 @@
 class SessionsController < ApplicationController
 
+    get '/home' do
+        erb :'sessions/home'
+    end
+
     get '/login' do
         if logged_in?
-            redirect '/trips'
+            redirect '/home'
         end
         @failed = false
         erb :'sessions/login'
@@ -12,7 +16,7 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:username])
         if !!user && user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect '/trips'
+            redirect '/home'
         else
             @failed = true
             erb :'sessions/login'
@@ -22,7 +26,7 @@ class SessionsController < ApplicationController
 
     get '/signup' do
         if logged_in?
-            redirect to '/trips'
+            redirect to '/home'
         end
         erb :'sessions/signup'
     end
@@ -33,7 +37,7 @@ class SessionsController < ApplicationController
             erb :'sessions/signup'
         else
             session[:user_id] = @user.id
-            redirect '/trips'
+            redirect '/home'
         end
     end
 
@@ -44,6 +48,10 @@ class SessionsController < ApplicationController
         else
           redirect to '/'
         end
+    end
+
+    get '/:user_id/trips' do
+        erb :'sessions/show'
     end
 
 
