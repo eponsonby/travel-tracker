@@ -13,12 +13,14 @@
 ActiveRecord::Schema.define(version: 2019_08_06_193336) do
 
   create_table "highlights", force: :cascade do |t|
-    t.string "category"
+    t.string "highlight_category"
     t.string "place"
+    t.string "notes"
     t.integer "trip_id"
   end
 
   create_table "trips", force: :cascade do |t|
+    t.string "trip_title"
     t.string "country"
     t.string "city"
     t.string "date_visited"

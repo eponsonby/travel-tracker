@@ -1,11 +1,13 @@
 <!--- Shows current users trips --->
-<% current_user.trips.each do |trip| %>
+<h1>Here are all of your trips!</h1>
+<% @user.trips.each do |trip| %>
+    <a href="/trips/<%= trip.id %>"><%= trip.trip_title %></a>
     <p><%= trip.country %></p>
     <p><%= trip.city %></p>
     <p><%= trip.date_visited %></p>
     <p><%= trip.category %></p>
     <% trip.highlights.each do |highlight| %>
-        <p><%= highlight.category %></p>
+        <p><%= highlight.highlight_category %></p>
         <p><%= highlight.place %></p>
     <% end %>
 

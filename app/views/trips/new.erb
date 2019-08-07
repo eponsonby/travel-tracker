@@ -1,4 +1,13 @@
 <form action='/trips' method="post">
+    <label>Category</label>
+    <select name="category">
+    <option value="Past Trip">Past Trip</option>
+    <option value="Wishlist">Wishlist</option>
+    </select>
+
+    <label>Trip Title</label>
+    <input type="text" name="trip_title"><br>
+
     <label>Country</label>
     <input type="text" name="country"><br>
     
@@ -8,12 +17,51 @@
     <label>Date Visited</label>
     <input type="text" name="date_visited"><br>
 
-    <label>Category</label>
-    <select name="category">
-    <option value="past">Past Trip</option>
-    <option value="future">Wishlist</option>
+    <h3>Trip Highlights</h3>
+
+    <label>Highlight Category</label>
+    <select name="highlight_category">
+    <option value="Food and Drinks">Food & Drinks</option>
+    <option value="Landmark">Landmark</option>
+    <option value="Transportation">Transportation</option>
+    <option value="Shopping">Shopping</option>
     </select>
 
-    <input type="submit" value="submit">
+    <label>Place</label>
+    <input type="text" name="place"><br>
+
+    <label>Notes</label>
+    <textarea name="notes" rows="4" cols="30" ></textarea><br>
+
+    <label>Highlight Category</label>
+    <select name="highlight_category">
+    <option value="Food and Drinks">Food & Drinks</option>
+    <option value="Landmark">Landmark</option>
+    <option value="Transportation">Transportation</option>
+    <option value="Shopping">Shopping</option>
+    </select>
+
+    <label>Place</label>
+    <input type="text" name="place"><br>
+
+    <label>Notes</label>
+    <textarea name="notes" rows="4" cols="30" ></textarea><br>
+
+
+    <label>Highlight Category</label>
+    <select name="highlight_category">
+    <option value="Food and Drinks">Food & Drinks</option>
+    <option value="Landmark">Landmark</option>
+    <option value="Transportation">Transportation</option>
+    <option value="Shopping">Shopping</option>
+    </select>
+
+    <label>Place</label>
+    <input type="text" name="place"><br>
+
+    <label>Notes</label>
+    <textarea name="notes" rows="4" cols="30" ></textarea><br>
+
+    <input type="submit" value="Create Trip">
 
   </form>

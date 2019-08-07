@@ -51,6 +51,7 @@ class SessionsController < ApplicationController
     end
 
     get '/:user_id/trips' do
+        @user = current_user
         erb :'sessions/show'
     end
 
