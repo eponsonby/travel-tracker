@@ -1,0 +1,14 @@
+<!--- Shows a single trip --->
+<p><%= @trip.country %></p>
+<p><%= @trip.city %></p>
+<p><%= @trip.date_visited %></p>
+<p><%= @trip.category %></p>
+    <% @trip.highlights.each do |highlight| %>
+        <p><%= highlight.category %></p>
+        <p><%= highlight.place %></p>
+    <% end %>
+
+<form method="post" action="/trips/<%= @trip.id %>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Trip">
+</form>
