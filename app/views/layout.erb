@@ -11,7 +11,10 @@
 </head>
 
 <body>
-    <h1>Welcome</h1>
+    <h1>Welcome (from layout.erb)</h1>
+    <% if logged_in? %>
+      <a href="/trips">Trips</a>
+     <% end %> 
     <%= yield %>
 </body>
 </html>

@@ -1,8 +1,51 @@
 class SessionsController < ApplicationController
 
     get '/login' do
+        if logged_in?
+            redirect '/trips'
+        end
+        @failed = false
+        erb :'sessions/login'
     end
 
-    get '/signup' do
+    post '/login' do
+        user = User.find_by(username: params[:username])
+        if !!user && user.authenticate(params[:password])
+            session[:user_id] = user.id
+            redirect '/trips'
+        else
+            @failed = true
+            erb :'sessions/login'
+        end
     end
+
+
+    get '/signup' do
+        if logged_in?
+            redirect to '/trips'
+        end
+        erb :'sessions/signup'
+    end
+
+    post '/signup' do
+        user = User.new(:first_name => params[:first_name], :last_name => params[:last_name], :username => params[:username], :email => params[:email], :password => params[:password])
+        if user.save && !user.username.empty? && !user.email.empty?
+            session[:user_id] = user.id
+            user.save
+            redirect to("/trips")
+        else
+            redirect to("/signup")
+        end
+    end
+
+    get '/logout' do
+        if logged_in?
+          session.clear
+          redirect '/login'
+        else
+          redirect to '/'
+        end
+    end
+
+
 end
