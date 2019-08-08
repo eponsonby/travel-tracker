@@ -18,17 +18,28 @@
 
     <label>Trip Title</label>
     <br>
-    <input type="text" name="trip_title">
+    <input type="text" name="trip_title" value="<%= @trip.trip_title %>">
+
+    <% if @failed_trip_title %>
+      <p class="danger">Don't forget to give your trip a title!</p>
+        <% end %>
     <br>
 
     <label>Country</label>
-    <input type="text" name="country"><br>
+    <input type="text" name="country" value="<%= @trip.country %>"><br>
+
+    <% if @failed_country %>
+        <p class="danger">Don't forget to include the country!</p>
+      <% end %>
     
     <label>City<label>
-    <input type="text" name="city"><br>
+    <input type="text" name="city" value="<%= @trip.city %>"><br>
 
     <label>Date Visited</label>
-    <input type="text" name="date_visited"><br>
+    <input type="text" name="date_visited" value="<%= @trip.date_visited %>"><br>
+    <% if @failed_date_visited %>
+        <p class="danger">Don't forget to include the date you went on this trip!</p>
+      <% end %>
 
 
     <input type="submit" value="Edit Trip">

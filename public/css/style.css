@@ -1,7 +1,70 @@
 html {
-    background-color: white;
+    background-color: #F1EDEE
 }
 
 .danger {
     color: red;
+}
+
+.hero_container {
+    margin: 0 auto;
+    width: 1000px;
+    height: 500px;
+    padding: 70px 0;    
+    background-color: white;
+}
+
+.homepage_text {
+    text-align: center;
+    font-family: 'Red Hat Text', sans-serif;
+    color: #3C5466;
+}
+
+img {
+    width: 800px;
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.title_container {
+    text-align: center;
+    clear: right;
+}
+
+.home_page_title {
+    text-align: center;
+    font-family: 'Red Hat Text', sans-serif;
+    display: inline-block;
+    color: #3C5466;
+
+}
+
+.home_page_subtitle {
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 75px;
+    line-height: 0px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    display: inline-block;
+    color: #3C5466;
+
+}
+
+.top_nav a {
+    float: left;
+    color: #3C5466;
+    text-align: center;
+    padding: 14px, 16px;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: 'Red Hat Text', sans-serif;
+    padding-right: 10px;
+}
+
+.top_nav {
+    float: right
 }

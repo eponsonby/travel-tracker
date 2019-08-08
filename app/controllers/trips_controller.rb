@@ -35,24 +35,6 @@ class TripsController < ApplicationController
 
     end
 
-    get '/trips/:trip_id/highlights/new' do
-        authenticate
-        @trip = Trip.find_by(id: params[:trip_id])
-        erb :'/highlights/new'
-    end
-
-    post '/highlights' do
-        trip = Trip.find_by(id: params[:trip_id])
-        if params[:place].empty?
-            #add in an error messsage
-            redirect to "/trips/#{trip.id}/highlights/new"
-        else
-            highlight = Highlight.create(highlight_category: params[:highlight_category], place: params[:place], notes: params[:notes], trip_id: params[:trip_id])
-            trip.highlights << highlight
-            redirect to "/trips/#{trip.id}"
-        end
-    end
-
     get '/trips/:trip_id' do
         @trip = Trip.find_by(id: params[:trip_id])
         @highlights = @trip.highlights
@@ -61,25 +43,37 @@ class TripsController < ApplicationController
 
     get '/trips/:trip_id/edit' do
         @trip = Trip.find_by(id: params[:trip_id])
+        @failed_date_visited = false
+        @failed_country = false
+        @failed_trip_title = false
         erb :'trips/edit'
     end
 
-    get '/trips/:trip_id/:highlight_id/edit' do
+    patch '/trips/:trip_id' do
         @trip = Trip.find_by(id: params[:trip_id])
-        @highlight = Highlight.find_by(id: params[:highlight_id])
-        erb :'highlights/edit'
+        if params[:category] == "Past Trip" && params[:date_visited].empty?
+            @failed_date_visited = true
+            erb :'/trips/edit'
+        elsif
+            params[:country].empty?
+                @failed_country = true
+                erb :'trips/edit'
+            elsif
+                params[:trip_title].empty?
+                @failed_trip_title = true
+                erb :'trips/edit'
+            else
+                trip = Trip.find_by(id: params[:trip_id])
+                trip.category = params[:category]
+                trip.date_visited = params[:date_visited]
+                trip.country = params[:country]
+                trip.trip_title = params[:trip_title]
+                trip.save
+                redirect to "/#{current_user.id}/trips"
+        end
+
     end
 
-    delete '/trips/:trip_id/:highlight_id' do
-        @highlight = Highlight.find_by(id: params[:highlight_id])
-        @trip = Trip.find_by(id: params[:trip_id])
-        if logged_in? && @trip.highlights.include?(@highlight)
-            @highlight.destroy
-            redirect "/trips/#{@trip.id}"
-        else
-            redirect "/trips/#{@trip.id}"
-        end
-    end
 
     delete '/trips/:trip_id' do
         @trip = Trip.find_by(id: params[:trip_id])
