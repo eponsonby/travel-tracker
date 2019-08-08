@@ -8,13 +8,22 @@
     <p class="home_page_subtitle">Travel Tracker</p>
 </div>
 
+<div class="login_form_container">
+<div class="login_form">
+
 <form action='/login' method="post">
-    <label for="username">Username</label>
+    <label for="username">username</label>
     <input id="username" type="text" name="username"><br>
-    <label for="password">Password</label>
+    <label for="password">password</label>
     <input id="password" type="password" name="password">
     <% if @failed %>
         <p class="danger">Your username/password is incorrect</p>
     <% end %>
-    <input type="submit" value="login">
+<div class="submit_button">
+    <br><input type="submit" value="login">
+</div>
+
 </form> 
+
+</div>
+</div>

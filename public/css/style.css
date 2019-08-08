@@ -68,3 +68,47 @@ img {
 .top_nav {
     float: right
 }
+
+.login_form_container {
+    width: 400px;
+    color: #3C5466;
+    margin: 0 auto;
+    padding: 70px 0; 
+}
+
+input {
+    padding: 5px 10px;
+    margin: 10px 8px 0;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+label, input {
+    display: inline-block;
+}
+
+label {
+    width: 32%;
+    text-align: right;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 20px;
+}
+
+.submit_button {
+    margin-right: 53px;
+    text-align: right;
+} 
+
+input[type=submit] {
+    background-color: #78A1BB;
+    color: white;
+    font-size: 20px;
+}
+
+input[type=submit]:focus {
+    outline: none;
+}
+    
+
+
