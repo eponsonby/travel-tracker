@@ -8,24 +8,29 @@ class TripsController < ApplicationController
 
     get '/trips/new' do
         authenticate
-        @failed = false
+        @failed_date_visited = false
+        @failed_country = false
+        @failed_trip_title = false
         erb :'trips/new'
     end
 
     post '/trips' do
-        binding.pry
         if params[:category] == "Past Trip" && params[:date_visited].empty?
-            @failed = true
+            @failed_date_visited = true
             erb :'/trips/new'
-        end
-        if params[:country].empty? || params[:trip_title].empty?
-            @failed = true
-            erb :'trips/new'
-        else
-            trip = Trip.create(trip_title: params[:trip_title], country: params[:country], city: params[:city], date_visited: params[:date_visited], category: params[:category])
-            current_user.trips << trip
-            current_user.save
-            redirect to "/#{current_user.id}/trips"
+        elsif
+            params[:country].empty?
+                @failed_country = true
+                erb :'trips/new'
+            elsif
+                params[:trip_title].empty?
+                @failed_trip_title = true
+                erb :'trips/new'
+            else
+                trip = Trip.create(trip_title: params[:trip_title], country: params[:country], city: params[:city], date_visited: params[:date_visited], category: params[:category])
+                current_user.trips << trip
+                current_user.save
+                redirect to "/#{current_user.id}/trips"
         end
 
     end

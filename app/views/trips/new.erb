@@ -7,19 +7,27 @@
 
     <label>Trip Title</label>
     <input type="text" name="trip_title"><br>
+      <% if @failed_trip_title %>
+      <p class="danger">Don't forget to give your trip a title!</p>
+        <% end %>
 
     <label>Country</label>
     <input type="text" name="country"><br>  
+
+     <% if @failed_country %>
+        <p class="danger">Don't forget to include the country!</p>
+      <% end %>
     
     <label>City<label>
     <input type="text" name="city"><br>
 
     <label>Date Visited</label>
     <input type="text" name="date_visited"><br>
+      <% if @failed_date_visited %>
+        <p class="danger">Don't forget to include the date you went on this trip!</p>
+      <% end %>
     
-    <% if @failed %>
-        <p class="danger">You must include a country and a trip title</p>
-    <% end %>
+  
 
     <input type="submit" value="Create Trip">
 
