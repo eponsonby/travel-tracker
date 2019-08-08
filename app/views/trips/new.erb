@@ -16,7 +16,10 @@
 
     <label>Date Visited</label>
     <input type="text" name="date_visited"><br>
-
+    
+    <% if @failed %>
+        <p class="danger">You must include a country and a trip title</p>
+    <% end %>
 
     <input type="submit" value="Create Trip">
 

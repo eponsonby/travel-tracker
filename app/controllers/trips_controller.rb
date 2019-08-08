@@ -8,21 +8,26 @@ class TripsController < ApplicationController
 
     get '/trips/new' do
         authenticate
+        @failed = false
         erb :'trips/new'
     end
 
     post '/trips' do
+        binding.pry
+        if params[:category] == "Past Trip" && params[:date_visited].empty?
+            @failed = true
+            erb :'/trips/new'
+        end
         if params[:country].empty? || params[:trip_title].empty?
-            #add in an error messsage
-            redirect to '/trips/new'
+            @failed = true
+            erb :'trips/new'
         else
             trip = Trip.create(trip_title: params[:trip_title], country: params[:country], city: params[:city], date_visited: params[:date_visited], category: params[:category])
-            highlight = Highlight.create(highlight_category: params[:highlight_category], place: params[:place], notes: params[:notes])
+            current_user.trips << trip
+            current_user.save
+            redirect to "/#{current_user.id}/trips"
         end
-        trip.highlights << highlight
-        current_user.trips << trip
-        current_user.save
-        redirect to "/#{current_user.id}/trips"
+
     end
 
     get '/trips/:trip_id/highlights/new' do
@@ -32,10 +37,15 @@ class TripsController < ApplicationController
     end
 
     post '/highlights' do
-        highlight = Highlight.create(highlight_category: params[:highlight_category], place: params[:place], notes: params[:notes], trip_id: params[:trip_id])
         trip = Trip.find_by(id: params[:trip_id])
-        trip.highlights << highlight
-        redirect to "/trips/#{trip.id}"
+        if params[:place].empty?
+            #add in an error messsage
+            redirect to "/trips/#{trip.id}/highlights/new"
+        else
+            highlight = Highlight.create(highlight_category: params[:highlight_category], place: params[:place], notes: params[:notes], trip_id: params[:trip_id])
+            trip.highlights << highlight
+            redirect to "/trips/#{trip.id}"
+        end
     end
 
     get '/trips/:trip_id' do
