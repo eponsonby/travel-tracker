@@ -1,0 +1,33 @@
+<p><%= @trip.trip_title %></p>
+<p><%= @trip.country %></p>
+<p><%= @trip.city %></p>
+<p><%= @trip.date_visited %></p>
+<p><%= @trip.category %></p>
+    <% @trip.highlights.each do |highlight| %>
+        <p><%= highlight.highlight_category %></p>
+        <p><%= highlight.place %></p>
+        <p><%= highlight.notes %></p>
+    <% end %>
+
+<form action='/highlights' method="post">
+    <h3>Add Trip Highlight</h3>
+
+    <label>Highlight Category</label>
+    <select name="highlight_category">
+    <option value="Food and Drinks">Food & Drinks</option>
+    <option value="Landmark">Landmark</option>
+    <option value="Transportation">Transportation</option>
+    <option value="Shopping">Shopping</option>
+    </select>
+
+    <label>Place</label>
+    <input type="text" name="place"><br>
+
+    <label>Notes</label>
+    <textarea name="notes" rows="4" cols="30" ></textarea><br>
+
+    <input type="hidden" name="trip_id" value="<%= @trip.id %>"<br>
+
+    <input type="submit" value="Create Highlight">
+
+  </form>

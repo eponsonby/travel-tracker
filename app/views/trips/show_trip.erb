@@ -10,6 +10,14 @@
         <p><%= highlight.notes %></p>
     <% end %>
 
+    <a href="/trips/<%= @trip.id %>/edit">Edit Trip</a>
+    <a href="/trips/<%= @trip.id %>/highlights/new">Add Trip Highlight</a>
+  
+    <% @highlights.each do |highlight| %>
+      <a href="/trips/<%= @trip.id %>/<%= highlight.id %>/edit">Edit Trip Highlight</a>
+    <% end %>
+
+
 <form method="post" action="/trips/<%= @trip.id %>">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Trip">

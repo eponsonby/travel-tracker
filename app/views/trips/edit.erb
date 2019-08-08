@@ -1,0 +1,38 @@
+<h2>Edit Trip</h2>
+
+<p><%= @trip.trip_title %></p>
+<p><%= @trip.country %></p>
+<p><%= @trip.city %></p>
+<p><%= @trip.date_visited %></p>
+<p><%= @trip.category %></p>
+
+<form action="/trips/<%= @trip.id%>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <br>
+    
+    <label>Category</label>
+    <select name="category">
+    <option value="Past Trip">Past Trip</option>
+    <option value="Wishlist">Wishlist</option>
+    </select>  <br>
+
+    <label>Trip Title</label>
+    <br>
+    <input type="text" name="trip_title">
+    <br>
+
+    <label>Country</label>
+    <input type="text" name="country"><br>
+    
+    <label>City<label>
+    <input type="text" name="city"><br>
+
+    <label>Date Visited</label>
+    <input type="text" name="date_visited"><br>
+
+
+    <input type="submit" value="Edit Trip">
+</form>
+
+<a class="button" href="/landmarks">Landmarks</a>
+<a class="button" href="/">Home</a>

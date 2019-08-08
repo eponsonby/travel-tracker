@@ -1,0 +1,31 @@
+<h3> Edit Highlight</h3>
+
+        <p><%= @highlight.highlight_category %></p>
+        <p><%= @highlight.place %></p>
+        <p><%= @highlight.notes %></p>
+
+
+<form action="/trips/<%= @trip.id%>/<%= @highlight.id%> method="post">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    
+    <label>Highlight Category</label>
+    <select name="highlight_category">
+    <option value="Food and Drinks">Food & Drinks</option>
+    <option value="Landmark">Landmark</option>
+    <option value="Transportation">Transportation</option>
+    <option value="Shopping">Shopping</option>
+    </select>
+
+    <label>Place</label>
+    <input type="text" name="place"><br>
+    
+    <label>Notes</label>
+    <textarea name="notes" rows="4" cols="30" ></textarea><br>
+
+    <input type="submit" value="Edit Highlight">
+</form>
+
+<form method="post" action="/trips/<%= @trip.id %>/<%= @highlight.id %>">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete Highlight">
+</form>
