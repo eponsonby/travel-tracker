@@ -1,15 +1,33 @@
-<h3>Sign Up</h3>
+<div class="index_nav">
+    <a href="/login">Log In</a>
+    <a href="/signup">Sign up</a>
+</div>
+
+<div class="title_container">
+    <p class="index_title">Travel Tracker</p>
+</div>
+
+<div class="login_form_container">
+<div class="login_form">
+
 <form action="/signup" method="POST">
-  <input type="text" name="first_name" placeholder="First Name:">
-  <input type="text" name="last_name" placeholder="Last Name:">
-  <input type="text" name="username" placeholder="Username:">
-  <input type="text" name="email" placeholder="Email:">
-  <input type="password" name="password" placeholder="Password:">
+  <label for="username">username</label>
+  <input type="text" name="username">
+  <label for="email">email</label>
+  <input type="text" name="email">
+  <label for="password">password</label>
+  <input type="password" name="password">
+  
+  <div class="sessions_button">
   <input type="submit" value="Sign Up">
+  </div>
 </form>
 
 <% if @user && @user.errors.any? %>
     <% @user.errors.full_messages.each do |error| %>
         <p class="danger"><%= error %></p>
     <% end %>
-<% end %>   
+<% end %>
+
+</div>
+</div>

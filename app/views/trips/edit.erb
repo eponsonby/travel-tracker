@@ -3,7 +3,7 @@
 <p><%= @trip.trip_title %></p>
 <p><%= @trip.country %></p>
 <p><%= @trip.city %></p>
-<p><%= @trip.date_visited %></p>
+<p><%= @trip.year_visited %></p>
 <p><%= @trip.category %></p>
 
 <form action="/trips/<%= @trip.id%>" method="post">
@@ -35,10 +35,10 @@
     <label>City<label>
     <input type="text" name="city" value="<%= @trip.city %>"><br>
 
-    <label>Date Visited</label>
-    <input type="text" name="date_visited" value="<%= @trip.date_visited %>"><br>
-    <% if @failed_date_visited %>
-        <p class="danger">Don't forget to include the date you went on this trip!</p>
+    <label>Year Visited</label>
+    <input type="text" name="year_visited" value="<%= @trip.year_visited %>"><br>
+    <% if @failed_year_visited %>
+        <p class="danger">Don't forget to include the year you went on this trip!</p>
       <% end %>
 
 

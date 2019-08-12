@@ -23,14 +23,12 @@ ActiveRecord::Schema.define(version: 2019_08_06_193336) do
     t.string "trip_title"
     t.string "country"
     t.string "city"
-    t.string "date_visited"
+    t.string "year_visited"
     t.string "category"
     t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
     t.string "username"
     t.string "email"
     t.string "password_digest"

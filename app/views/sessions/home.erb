@@ -1,1 +1,35 @@
-<h1>Welcome <%= current_user.first_name %></h1>
+<div class="title_container">
+    <p class="index_title">Travel Tracker</p>
+</div>
+
+<div class="homepage">
+<div class="homepage_container">
+<div class="welcome_message">
+<p> Welcome <%= current_user.username %></p>
+</div>
+
+<p>You took a trip to <%= @trip.country%> in <%= @trip.year_visited%></p>
+    <p>Where to next?</p>
+
+<div class="homepage_buttons">
+<div class="top_button">
+<form method="get" action="/trips/new">
+    <button type="submit">Create a Trip</button>
+</form>
+</div>
+
+<div class="middle_button">
+<form method="get" action="/<%= current_user.id %>/trips/past-trips">
+    <button type="submit">See Your Past Trips</button>
+</form>
+</div>
+
+<div class="bottom_button">
+<form method="get" action="/<%= current_user.id %>/trips/past-trips">
+    <button type="submit">See Your Future Trips</button>
+</form>
+</div>
+
+</div>
+</div>
+</div>

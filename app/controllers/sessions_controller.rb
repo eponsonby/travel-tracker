@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
 
     get '/home' do
+        @trip = Trip.all.sample
         erb :'sessions/home'
     end
 
@@ -32,7 +33,7 @@ class SessionsController < ApplicationController
     end
 
     post '/signup' do
-        @user = User.create(:first_name => params[:first_name], :last_name => params[:last_name], :username => params[:username], :email => params[:email], :password => params[:password])
+        @user = User.create(:username => params[:username], :email => params[:email], :password => params[:password])
         if @user.errors.any?
             erb :'sessions/signup'
         else

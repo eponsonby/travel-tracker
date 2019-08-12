@@ -34,7 +34,7 @@ class HighlightsController < ApplicationController
             erb :'highlights/edit'
         else
             @trip.category = params[:category]
-            @trip.date_visited = params[:date_visited]
+            @trip.year_visited = params[:year_visited]
             @trip.country = params[:country]
             @trip.trip_title = params[:trip_title]
             @trip.save
