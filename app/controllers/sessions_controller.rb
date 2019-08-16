@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
     get '/home' do
-        @trip = Trip.all.sample
+        @trip = current_user.trips.all.sample
         erb :'sessions/home'
     end
 
