@@ -13,11 +13,11 @@ gem "require_all"
 
 gem "rake"
 
+gem "pg"
+
 group :production do
-  gem 'pg'
 end
 
 group :development, :test do
-    gem "pg"
     gem "pry"
 end
