@@ -1,24 +1,23 @@
-
-gem "sinatra", "~> 2.0"
-
+source 'https://rubygems.org'
+gem "sinatra"
 
 gem "activerecord"
 
 gem "sinatra-activerecord"
 
-gem "shotgun", "~> 0.9.2"
+gem "shotgun"
 
-gem "bcrypt", "~> 3.1"
+gem "bcrypt"
 
-gem "require_all", "~> 2.0"
+gem "require_all"
 
-gem "rake", "~> 12.3"
+gem "rake"
 
 group :production do
   gem 'pg'
 end
 
 group :development, :test do
-    gem "sqlite3", "~> 1.3"
-    gem "pry", "~> 0.12.2"
+    gem "sqlite3" 
+    gem "pry"
 end
