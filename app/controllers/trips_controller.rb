@@ -100,9 +100,10 @@ class TripsController < ApplicationController
                 trip.category = params[:category]
                 trip.year_visited = params[:year_visited]
                 trip.country = params[:country]
+                trip.city = params[:city]
                 trip.trip_title = params[:trip_title]
                 trip.save
-                redirect "/trips"
+                redirect '/trips'
             end
 
     end

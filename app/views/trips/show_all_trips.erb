@@ -29,7 +29,9 @@
 </div>
 
 <div class="grid">
-<% if @trips.length >1 %>
+<% if @trips == nil %>
+
+<% elsif @trips.length > 1 %>
   <% @trips.each do |trip| %>
     <div class="module">
     <h4><%= trip.trip_title %></h4>
