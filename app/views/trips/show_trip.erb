@@ -1,24 +1,108 @@
 <!--- Shows a single trip --->
-<p><%= @trip.trip_title %></p>
-<p><%= @trip.country %></p>
-<p><%= @trip.city %></p>
-<p><%= @trip.year_visited %></p>
-<p><%= @trip.category %></p>
-    <% @trip.highlights.each do |highlight| %>
-        <p><%= highlight.highlight_category %></p>
-        <p><%= highlight.place %></p>
-        <p><%= highlight.notes %></p>
-    <% end %>
+<div class="title_container">
+    <p class="index_title">Travel Tracker</p>
+</div>
 
-    <a href="/trips/<%= @trip.id %>/edit">Edit Trip</a>
-    <a href="/trips/<%= @trip.id %>/highlights/new">Add Trip Highlight</a>
+<div class="show_trip_container">
+
+<div class="show_trip_table">
+  <div class="title">
+  <p><%= @trip.trip_title %></p>
+  </div>
+
+<div class="row">
+
+  <div class="column">
+    <p><img style="vertical-align:middle" src="/assets/images/country.png" alt="Country Icon"><label>Country: </label><%= @trip.country %></p>
+  </div>
   
-    <% @highlights.each do |highlight| %>
-      <a href="/trips/<%= @trip.id %>/<%= highlight.id %>/edit">Edit Trip Highlight</a>
-    <% end %>
+  <div class="column">
+    <p><img style="vertical-align:middle" src="/assets/images/city.png" alt="City Icon"><label>City: </label><%= @trip.city %></p>
+  </div>
 
+  <div class="column">
+    <p><img style="vertical-align:middle" src="/assets/images/calendar.jpg" alt="Calendar Icon"><label>Year: </label><%= @trip.year_visited %></p>
+  </div>
 
+  <div class="column">
+    <p><img style="vertical-align:middle" src="/assets/images/heart-icon.png" alt="Heart Icon"><label>Type: </label><%= @trip.category %></p>
+  </div>
+
+</div>
+</div>
+</div>
+
+<div class="show_trip_buttons">
+<div class="show_trip_buttons_table">
+<div class="row">
+
+<div class="column">
+  <form method="get" action="/trips/<%= @trip.id %>/edit">
+    <button type="submit">Edit Trip</button>
+  </form>
+</div>
+
+<div class="column">
+  <form method="get" action="/trips/<%= @trip.id %>/highlights/new">
+    <button type="submit">Add Trip Highlight</button>
+  </form>
+ </div> 
+
+<div class="column">
 <form method="post" action="/trips/<%= @trip.id %>">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
   <input type="submit" value="Delete Trip">
 </form>
+</div>
+</div>
+
+
+<div class="grid">
+<% if @highlights.length > 1 %>
+  <% @highlights.each do |highlight| %>
+    <div class="module">
+    <h4><%= highlight.place %></h4>
+
+    <div class="box">
+    <img src="/assets/images/landmark.png" alt="Landmark Icon">
+    <p><span class="label">Place: </span><%= highlight.place %></p><br>
+    </div>
+
+    <div class="notes_box">
+    <img src="/assets/images/notes.png" alt="Notes Icon">
+    <p><span class="label">Notes: </span><span class="notes"><%= highlight.notes %></span></p>
+    </div>
+
+    <div class="box">
+    <form method="get" action="/trips/<%= @trip.id %>/<%= highlight.id %>/edit">
+    <button type="submit">Edit Highlight</button>
+    </form>
+    </div>
+
+    </div>
+  <% end %>
+<% elsif @highlights.length == 1 %>
+<div class="module">
+
+    <div class="box">
+    <img src="/assets/images/landmark.png" alt="Landmark Icon">
+    <p><span class="label">Place: </span><%= @highlights.first.place %></p><br>
+    </div>
+
+    <div class="box">
+    <img src="/assets/images/notes.png" alt="Notes Icon">
+    <p><span class="label">Notes: </span><%= @highlights.first.notes %></p><br>
+    </div>
+
+    <div class="box">
+    <form method="get" action="/trips/<%= @trip.id %>/<%= @highlights.first.id %>/edit">
+    <button type="submit">Edit Highlight</button>
+    </form>
+    </div>
+
+
+
+    </div>
+<% else %>  
+<% end %>
+</div>

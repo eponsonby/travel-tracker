@@ -2,8 +2,23 @@ html {
     background-color: #F1EDEE
 }
 
-.danger {
-    color: red;
+.new_trip_danger {
+    color: #DB5461;
+    line-height: 15px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-right: 17px;
+    margin-top: 10px;
+}
+
+.edit_trip_danger {
+    color: #DB5461;
+    line-height: 15px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-right: 17px;
+    margin-top: 10px;
+
 }
 
 .hero_container {
@@ -32,6 +47,7 @@ html {
 .title_container {
     text-align: center;
     clear: right;
+    margin-bottom: 25px;    
 }
 
 
@@ -102,6 +118,12 @@ input[type=submit] {
     width: 85%;
 }
 
+input[type=submit]:hover  {
+    background-color: #93B7BE;
+    color :white;
+    cursor: pointer;
+}
+
 input[type=submit]:focus {
     outline: none;
 }
@@ -140,7 +162,7 @@ input[type=submit]:focus {
 
 .grid {
     /*Grid Fallback */
-    clear: right;
+    clear: both;
     display: flex;
     flex-wrap: wrap;
 
@@ -154,12 +176,10 @@ input[type=submit]:focus {
 .module {
     /* Demo-Specific Styles */
     background: white;
-    /* display: flex; */
-    /* align-items: center; */
-    height: 300px;
+    height: 375px;
     font-family: 'Red Hat Text', sans-serif;
     color: #3C5466;
-    line-height: 85%;
+    line-height: 22px;
     padding-left: 10px;
     padding-top: 10px;
     padding-right: 15px;
@@ -170,11 +190,32 @@ input[type=submit]:focus {
     flex: 1 1 200px;
 }
 
+.module2 {
+    /* Demo-Specific Styles */
+    background: white;
+    height: 450px;
+    font-family: 'Red Hat Text', sans-serif;
+    color: #3C5466;
+    line-height: 22px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-right: 15px;
+
+    
+    /* Flex Fallback */
+    margin-left: 5px;
+    margin-right: 5px;
+    flex: 1 1 200px;
+    border: 1px solid black;
+}
+
+
 .grid .label {
     font-weight: bold;
-    line-height: 10px;
+    line-height: 25px;
 
 }
+
 
 .grid h4 {
     text-align: center;
@@ -183,6 +224,12 @@ input[type=submit]:focus {
 /* If Grid is supported, remove the margin we set for the fallback */
 @supports (display: grid) {
     .module {
+      margin: 0;
+    }
+  }  
+
+  @supports (display: grid) {
+    .module2 {
       margin: 0;
     }
   }  
@@ -202,6 +249,13 @@ input[type=submit]:focus {
     padding-left: 10px;
 }
 
+.grid .module2 .box {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 10px;
+}
+
 .grid .module .view_trip {
     text-align: right;
 }
@@ -215,6 +269,12 @@ input[type=submit]:focus {
     border: none;
 }
 
+.grid .module2 .box button[type=submit] {
+    width: 200px;
+    margin: 0 auto;
+}
+
+
 .grid .module .view_trip button:focus {
     outline: none;
 }
@@ -224,6 +284,13 @@ input[type=submit]:focus {
     line-height: 0px;
     font-size: 18px;
 }
+
+.grid button[type=submit]:hover  {
+    background-color: #93B7BE;
+    color :white;
+    cursor: pointer;
+}
+
 
 .homepage_buttons {
     text-align: center;
@@ -254,38 +321,396 @@ input[type=submit]:focus {
 
 
 .sort_text {
-    width: 345px;
-    line-height: 0px;
-    padding-bottom: 1px;
     font-family: 'Amatic SC', cursive;
     color: #3C5466;
     font-size: 25px;
-    position: relative;
-    top: 50px;
-    bottom: 50px;
-}
+    float: left;
+    line-height: 1px;
+    margin-bottom: 2px;
+    }
+
 .sort_menu {
-    overflow: hidden;
-    background-color: #93B7BE;
     font-family: 'Red Hat Text', sans-serif;
-    width: 285px;
     float: right;
-    margin-bottom: 10px;
   }
 
 .sort_menu_container {
-    width: 345px;
+    margin: 0 auto;
+    width: 350px;
+
 }
   
-  .sort_menu a {
+.sort_menu a {
     float: left;
     font-size: 16px;
-    color: white;
+    color: #3C5466;
+    font-weight: bold;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
   }
-  
-  .selected {
-    background-color: #DB7F8E
+
+.filter_menu_container {
+    clear: both;
+    margin: 0 auto;
+    width: 450px;
+}
+
+
+.filter_menu {
+    font-family: 'Red Hat Text', sans-serif;
+    float: right;
+    padding-right: 40px;
+
   }
+
+.filter_menu a {
+    float: left;
+    font-size: 16px;
+    color: #3C5466;
+    font-weight: bold;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+.filter_text {
+    font-family: 'Amatic SC', cursive;
+    color: #3C5466;
+    font-size: 25px;
+    float: left;
+    line-height: 1px;
+    padding-left: 60px;
+}
+  
+  .sort_menu .selected, .filter_menu .selected {
+    color: #DB7F8E;
+    font-weight: bold;
+  }
+
+  .new_trip_subtitle {
+      margin: 0 auto;
+      width: 30%;
+      background-color: #8AA29E;
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border: 2px solid #8AA29E;
+      font-size: 25px;
+      color: white;
+      font-weight: bolder;
+      letter-spacing: 3px;
+      font-family: 'Red Hat Text', sans-serif;
+  }
+
+  .form_wrapper {
+      margin: 0 auto;
+      width: 30%;
+      background-color: white;
+      height: 400px;
+      padding-top: 20px;
+      border: 2px solid #3C5466;
+      color: #3C5466;
+      font-size: 15px;
+      font-weight: bold;
+      font-family: 'Red Hat Text', sans-serif;
+  }
+
+  .form_wrapper .trip_title {
+      text-align: center;
+  }
+
+  .form_wrapper .trip_title input {
+      text-align: center;
+      width: 293px;
+      height: 20px;
+      font-size: 15px;
+      font-family: 'Red Hat Text', sans-serif;
+      color: #3C5466;
+      border-radius: 4px;
+  }
+
+  .row {
+    display: flex;
+    width: 93%;
+    padding: 10px 10px;
+  }
+  
+  .form_wrapper .row .column select[name=category], .form_wrapper .row .column select[name=country], .form_wrapper .row .column input[name=city]{
+    width: 150px;
+  }
+
+  .create_trip {
+  width: 100%;
+  margin: 0 auto;
+}
+
+  .column {
+    flex: 50%;
+    padding: 10px 10px; 
+  }
+
+
+  .column1 {
+    flex: 50%;
+    text-align: right;
+    padding-top: 10px;
+    padding-right: 10px;
+
+  }
+
+  .column select, .column input {
+      width: 100%;
+      border-radius: 4px;
+      height: 20px;
+      font-family: 'Red Hat Text', sans-serif;
+      color: #3C5466;
+      font-size: 15px;
+  }
+
+  .table {
+      width: 70%;
+      margin: 0 auto;
+      padding-top: 10px;
+  }
+
+  .table input[type=submit] {
+      width: 100%;
+      border-radius: 4px;
+  }
+
+  .show_trip_header, .create_highlight_header {
+      height: 75px;
+  }
+  .show_trip_container, .create_highlight_container {
+      clear: both;
+      background-color: white;
+      width: 60%;
+      margin: 0 auto;
+  }
+
+  .show_trip_table, .create_highlight_table {
+      font-family: 'Red Hat Text', sans-serif;
+      color: #3C5466;
+  }
+
+  .show_trip_table .row, .create_highlight_table .row {
+      width: 100%;
+      padding: 0px;
+  }
+
+
+.show_trip_table img, .create_highlight_table img {
+    width: 32px;
+    height: 32px;
+    padding-right: 10px;
+
+}
+
+.show_trip_table .column, .create_highlight_table {
+    text-align: center;
+}
+
+.show_trip_table label {
+    text-align: center;
+    font-weight: bolder;
+}
+
+
+.show_trip_table .title, .create_highlight_table .title {
+    text-align: center;
+    font-size: 20px;
+    padding-top: 10px;
+    font-weight: bolder;
+}
+
+.show_trip_buttons button[type=submit], input[type=submit] {
+    background-color: #78A1BB;
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.show_trip_buttons button[type=submit]:hover  {
+    background-color: #93B7BE;
+    color :white;
+    cursor: pointer;
+}
+
+
+.show_trip_buttons_table {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.show_trip_buttons_table .row {
+    column-width: 20%;
+    margin: 0 auto;
+
+}
+
+.show_trip_buttons_table .column {
+    column-width: 20%;
+}
+
+.edit_trip, .create_highlight_form {
+    background-color: white;
+    margin: 0 auto;
+    width: 60%;
+    margin-top: 50px;
+    font-family: 'Red Hat Text', sans-serif;
+    color: #3C5466;
+}
+
+.edit_trip_table {
+    column-width: 417px;
+    font-family: 'Red Hat Text', sans-serif;
+    color: #3C5466;
+
+}
+
+.edit_trip_table .row {
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.edit_trip_table .column {
+    text-align: center;
+    padding-left: 0px;
+}
+
+.edit_trip_table .column input[type=text], select[name=country], select[name=category], .edit_trip_table select[name=year_visited] {
+    width: 50%;
+    padding-left: 5px;
+    font-family: 'Red Hat Text', sans-serif;
+    color: #3C5466;
+    font-size: 15px;
+    padding-left: 5px;
+
+}
+
+.edit_trip_table .row .column label {
+    padding-right: 35px;
+    font-weight: bolder;
+}
+
+.edit_trip_button input[type=submit] {
+    background-color: #78A1BB;
+    color: white;
+    font-size: 20px;
+    width: 20%;
+    height: 100%;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.edit_trip_button {
+    text-align: center;
+}
+
+.edit_trip_button input[type=submit]:hover  {
+    background-color: #93B7BE;
+    color :white;
+    cursor: pointer;
+}
+
+.create_highlight_form label {
+    font-weight: bolder;
+}
+
+.create_highlight_form {
+    height: 300px;
+}
+
+.create_highlight_table label {
+    font-weight: bolder;
+    text-align: center;
+}
+
+.create_highlight_form_table td {
+    column-width: 450px;
+}
+
+.create_highlight_form_table label {
+    margin-left: 15px;
+}
+
+.create_highlight_form_table input[type=text] {
+    width: 200px;
+    height: 20px;
+    margin-left: 10px;
+    border-radius: 4px;
+    font-family: 'Red Hat Text', sans-serif;
+    color: gray;
+    font-size: 15px;
+    padding-left: 5px;
+    
+}
+
+.create_highlight_form_table textarea[name=notes] {
+    width: 300px;
+    height: 200px;
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 4px;
+    border: 0.5px solid #3C5466;
+    color: gray;
+    font-size: 15px;
+    padding-left: 5px;
+
+}
+
+.create_highlight_form_table label {
+    font-weight: bolder;
+
+}
+
+.create_highlight_form_table .save_highlight {
+    width: 50%;
+    float: left;
+    margin-right: 10px;
+}
+
+.create_highlight_form_table .delete {
+    margin-left: 10px;
+    width: 45%;
+    float: right;
+}
+
+.create_highlight_form_table .button_holder {
+    margin: 0 auto;
+    width: 50%;
+}
+
+ button:focus {
+ outline: none;
+ }
+
+ .error_container {
+     width: 50%;
+     padding-top: 200px;
+     margin: 0 auto;
+ }
+
+ .error_title {
+    font-family: 'Amatic SC', cursive;
+    font-size: 75px;
+    color: #3C5466;
+    text-align: center;
+
+ }
+
+ .error_text {
+    font-family: 'Red Hat Text', sans-serif;
+    color: #3C5466;
+    text-align: center;
+    font-size: 25px;
+ }

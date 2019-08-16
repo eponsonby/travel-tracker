@@ -1,33 +1,56 @@
-<p><%= @trip.trip_title %></p>
-<p><%= @trip.country %></p>
-<p><%= @trip.city %></p>
-<p><%= @trip.year_visited %></p>
-<p><%= @trip.category %></p>
-    <% @trip.highlights.each do |highlight| %>
-        <p><%= highlight.highlight_category %></p>
-        <p><%= highlight.place %></p>
-        <p><%= highlight.notes %></p>
-    <% end %>
+<div class="title_container">
+    <p class="index_title">Travel Tracker</p>
+</div>
+
+<div class="create_highlight_container">
+
+<div class="create_highlight_table">
+  <div class="title">
+  <p><%= @trip.trip_title %></p>
+  </div>
+
+<div class="row">
+
+  <div class="column">
+    <p><img style="vertical-align:middle" src="/assets/images/country.png" alt="Country Icon"><label>Country: </label><%= @trip.country %></p>
+  </div>
+  
+  <div class="column">
+    <p><img style="vertical-align:middle" src="/assets/images/city.png" alt="City Icon"><label>City: </label><%= @trip.city %></p>
+  </div>
+
+  <div class="column">
+    <p><img style="vertical-align:middle" src="/assets/images/calendar.jpg" alt="Calendar Icon"><label>Year: </label><%= @trip.year_visited %></p>
+  </div>
+
+  <div class="column">
+    <p><img style="vertical-align:middle" src="/assets/images/heart-icon.png" alt="Heart Icon"><label>Type: </label><%= @trip.category %></p>
+  </div>
+
+</div>
+</div>
+</div>
+
+<div class="create_highlight_form">
+<div class="create_highlight_form_table">
+<table>
 
 <form action='/highlights' method="post">
-    <h3>Add Trip Highlight</h3>
+<tr>
+    <td><label>Place:</label>
+    <input type="text" name="place" placeholder="Where did you go?"></td>
 
-    <label>Highlight Category</label>
-    <select name="highlight_category">
-    <option value="Food and Drinks">Food & Drinks</option>
-    <option value="Landmark">Landmark</option>
-    <option value="Transportation">Transportation</option>
-    <option value="Shopping">Shopping</option>
-    </select>
+    <td><label>Notes:</label>
+    <textarea maxlength="300" name="notes" placeholder="What did you see?"></textarea></td>
+</tr>
+    <input type="hidden" name="trip_id" value="<%= @trip.id %>">
+</table>
 
-    <label>Place</label>
-    <input type="text" name="place"><br>
-
-    <label>Notes</label>
-    <textarea name="notes" rows="4" cols="30" ></textarea><br>
-
-    <input type="hidden" name="trip_id" value="<%= @trip.id %>"<br>
-
+<div class="button_holder">
     <input type="submit" value="Create Highlight">
+</div>
+
 
   </form>
+  </div>
+  </div>

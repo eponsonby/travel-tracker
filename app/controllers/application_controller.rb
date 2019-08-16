@@ -4,6 +4,11 @@ class ApplicationController < Sinatra::Base
         erb :index
     end
 
+    not_found do 
+        status 404
+        erb :oops
+    end
+
     configure do
         set :views, 'app/views'
         set :public_folder, 'public'

@@ -10,9 +10,9 @@ class HighlightsController < ApplicationController
         trip = Trip.find_by(id: params[:trip_id])
         if params[:place].empty?
             #add in an error messsage
-            redirect to "/trips/#{trip.id}/highlights/new"
+            erb :'/highlights/new'
         else
-            highlight = Highlight.create(highlight_category: params[:highlight_category], place: params[:place], notes: params[:notes], trip_id: params[:trip_id])
+            highlight = Highlight.create(place: params[:place], notes: params[:notes], trip_id: params[:trip_id])
             trip.highlights << highlight
             redirect to "/trips/#{trip.id}"
         end
@@ -28,17 +28,14 @@ class HighlightsController < ApplicationController
     patch '/trips/:trip_id/:highlight_id' do
         @trip = Trip.find_by(id: params[:trip_id])
         @highlight = Highlight.find_by(id: params[:highlight_id])
-
         if params[:place].empty?
             @failed_place = true
             erb :'highlights/edit'
         else
-            @trip.category = params[:category]
-            @trip.year_visited = params[:year_visited]
-            @trip.country = params[:country]
-            @trip.trip_title = params[:trip_title]
-            @trip.save
-            redirect "/trips/#{@trip.id}"
+            @highlight.place = params[:place]
+            @highlight.notes = params[:notes]
+            @highlight.save
+            redirect to "/trips/#{@trip.id}"
         end
     end
 
