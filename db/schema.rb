@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_08_06_193336) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "highlights", force: :cascade do |t|
     t.string "highlight_category"
     t.string "place"
