@@ -6,13 +6,13 @@ class TripsController < ApplicationController
         @sort = params[:sort]
         @status = params[:status]
         if @status == "pasttrips"
-            @trips = Trip.where("category = 'Past Trip'")
+            @trips = current_user.trips.where("category = 'Past Trip'")
         elsif @status == "wishlist"
-            @trips = Trip.where("category = 'Wishlist'")
+            @trips = current_user.trips.where("category = 'Wishlist'")
         else
-            @trips = Trip.all
+            @trips = current_user.trips.all
         end
-
+        
         if @sort == 'country'
             @trips = @trips.order(:country)
         elsif @sort == "year"
