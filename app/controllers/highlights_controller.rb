@@ -2,18 +2,19 @@ class HighlightsController < ApplicationController
 
     get '/trips/:trip_id/highlights/new' do
         authenticate
+        @failed_place = false
         @trip = Trip.find_by(id: params[:trip_id])
         erb :'/highlights/new'
     end
 
     post '/highlights' do
-        trip = Trip.find_by(id: params[:trip_id])
+        @trip = Trip.find_by(id: params[:trip_id])
         if params[:place].empty?
-            #add in an error messsage
+            @failed_place = true
             erb :'/highlights/new'
         else
             highlight = Highlight.create(place: params[:place], notes: params[:notes], trip_id: params[:trip_id])
-            trip.highlights << highlight
+            @trip.highlights << highlight
             redirect to "/trips/#{trip.id}"
         end
     end

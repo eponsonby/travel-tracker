@@ -11,6 +11,15 @@ html {
     margin-top: 10px;
 }
 
+.new_highlight_danger {
+    color: #DB5461;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-right: 17px;
+    margin-top: 10px;
+}
+
+
 .edit_trip_danger {
     color: #DB5461;
     line-height: 15px;

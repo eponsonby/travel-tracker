@@ -38,7 +38,13 @@
 <form action='/highlights' method="post">
 <tr>
     <td><label>Place:</label>
-    <input type="text" name="place" placeholder="Where did you go?"></td>
+    <input type="text" name="place" placeholder="Where did you go?">
+    
+    <% if @failed_place %>
+        <p class="new_highlight_danger"> Please include a place!</p>
+        <% end %>
+    </td>
+
 
     <td><label>Notes:</label>
     <textarea maxlength="300" name="notes" placeholder="What did you see?"></textarea></td>
