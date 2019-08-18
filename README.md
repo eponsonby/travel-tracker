@@ -1,6 +1,6 @@
 # Travel Tracker
 
-Welcome to Travel Tracker! This Sinatra application allows a user to login and create, read, udpate, destroy and view trips and trip highlights.
+Welcome to Travel Tracker! This Sinatra application allows a user to login and then create, read, update, destroy and view trips and trip highlights.
 
 
 ## Usage
