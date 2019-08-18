@@ -1,24 +1,10 @@
 source 'https://rubygems.org'
-# gem "sinatra"
 
-# gem "activerecord"
-
-# gem "sinatra-activerecord"
-
-# gem "shotgun"
-
-# gem "bcrypt"
-
-# gem "require_all"
-
-# gem "rake"
-
-# gem "pg"
 gem "sinatra", "~> 2.0"
 
-gem "activerecord", "~> 6.0"
-
 gem "sinatra-activerecord", "~> 2.0"
+
+gem "activerecord", "~> 5.2"
 
 gem "shotgun", "~> 0.9.2"
 

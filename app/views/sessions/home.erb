@@ -22,11 +22,14 @@
 </form>
 </div>
 
+<% if @trip == nil %>
+<% else %>
 <div class="middle_button">
-<form method="get" action="/<%= current_user.id %>/trips/past-trips">
+<form method="get" action="/trips">
     <button type="submit">See Your Trips</button>
 </form>
 </div>
+<% end %>
 
 
 </div>

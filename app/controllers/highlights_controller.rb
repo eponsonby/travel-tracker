@@ -15,7 +15,7 @@ class HighlightsController < ApplicationController
         else
             highlight = Highlight.create(place: params[:place], notes: params[:notes], trip_id: params[:trip_id])
             @trip.highlights << highlight
-            redirect to "/trips/#{trip.id}"
+            redirect to "/trips/#{@trip.id}"
         end
     end
 
