@@ -2,7 +2,6 @@ class TripsController < ApplicationController
 
     get '/trips' do
         authenticate
-        @user_id = params[:user_id]
         @sort = params[:sort]
         @status = params[:status]
         if @status == "pasttrips"
@@ -12,7 +11,7 @@ class TripsController < ApplicationController
         else
             @trips = current_user.trips.all
         end
-        
+
         if @trips != []
             if @sort == 'country'
                 @trips = @trips.order(:country)
@@ -55,10 +54,12 @@ class TripsController < ApplicationController
             @failed_country = true
             erb :'/trips/new'
         else
+            logger.info 'params'
+            logger.info params
             trip = Trip.create(trip_title: params[:trip_title], country: params[:country], city: params[:city], year: params[:year], category: params[:category])
             current_user.trips << trip
             current_user.save
-            redirect to "/trips"
+            redirect to '/trips'
         end
 
     end

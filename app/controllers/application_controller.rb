@@ -14,6 +14,7 @@ class ApplicationController < Sinatra::Base
         set :public_folder, 'public'
         enable :sessions
         set :session_secret, SESSION_SECRET
+        enable :logging
     end
 
     helpers do
