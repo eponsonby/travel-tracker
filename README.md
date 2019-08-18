@@ -8,7 +8,7 @@ To use this app, just clone, run rake db:migrate and then run shotgun. It can al
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/eponsonby/pup_finder. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/eponsonby/travel-tracker. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
