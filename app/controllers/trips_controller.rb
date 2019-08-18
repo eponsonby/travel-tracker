@@ -16,9 +16,9 @@ class TripsController < ApplicationController
         if @sort == 'country'
             @trips = @trips.order(:country)
         elsif @sort == "year"
-            @trips = @trips.order(:year_visited)
+            @trips = @trips.order(:year)
         elsif @sort == "year,desc"
-            @trips = @trips.order('year_visited ASC').reverse_order
+            @trips = @trips.order('year ASC').reverse_order
         elsif @sort == "city"
             @trips = @trips.order(:city)
         elsif @sort == "title"
@@ -31,7 +31,7 @@ class TripsController < ApplicationController
     
     get '/trips/new' do
         authenticate
-        @failed_year_visited = false
+        @failed_year = false
         @failed_trip_title = false
         @failed_country = false
         @failed_category = false
@@ -39,8 +39,8 @@ class TripsController < ApplicationController
     end
 
     post '/trips' do
-        if params[:category] == "Past Trip" && params[:year_visited] == nil
-            @failed_year_visited = true
+        if params[:category] == "Past Trip" && params[:year] == nil
+            @failed_year = true
             erb :'/trips/new'
         elsif
             params[:category] == nil
@@ -55,7 +55,7 @@ class TripsController < ApplicationController
             @failed_country = true
             erb :'/trips/new'
         else
-            trip = Trip.create(trip_title: params[:trip_title], country: params[:country], city: params[:city], year_visited: params[:year_visited], category: params[:category])
+            trip = Trip.create(trip_title: params[:trip_title], country: params[:country], city: params[:city], year: params[:year], category: params[:category])
             current_user.trips << trip
             current_user.save
             redirect to "/trips"
@@ -72,7 +72,7 @@ class TripsController < ApplicationController
     get '/trips/:trip_id/edit' do
         @trip = Trip.find_by(id: params[:trip_id])
         @highlights = @trip.highlights
-        @failed_year_visited = false
+        @failed_year = false
         @failed_country = false
         @failed_trip_title = false
         erb :'trips/edit'
@@ -80,8 +80,8 @@ class TripsController < ApplicationController
 
     patch '/trips/:trip_id' do
         @trip = Trip.find_by(id: params[:trip_id])
-        if params[:category] == "Past Trip" && params[:year_visited] == nil
-            @failed_year_visited = true
+        if params[:category] == "Past Trip" && params[:year] == nil
+            @failed_year = true
             erb :'/trips/edit'
         elsif
             params[:country] == nil
@@ -98,7 +98,7 @@ class TripsController < ApplicationController
             else
                 trip = Trip.find_by(id: params[:trip_id])
                 trip.category = params[:category]
-                trip.year_visited = params[:year_visited]
+                trip.year = params[:year]
                 trip.country = params[:country]
                 trip.city = params[:city]
                 trip.trip_title = params[:trip_title]

@@ -26,7 +26,7 @@
     <select name="category">
     <option disabled selected value> -- select a type -- </option>
       <option value="Past Trip">Past Trip</option>
-      <option value="Wishlist">Wishlist</option>
+      <option value="Future Trip">Future Trip</option>
     </select>
     <% if @failed_category %>
         <p class="new_trip_danger">Select a trip type!</p>
@@ -304,10 +304,10 @@
 
 <div class="row">
   <div class="column1">
-    <label>Year Visited</label>
+    <label>Year</label>
   </div>
   <div class="column">
-  <select name="year_visited">
+  <select name="year">
     <option disabled selected value> -- select a year -- </option>
       <% x = Time.now.year %> 
       <% for i in x.downto(1980) do %>
@@ -317,7 +317,7 @@
 </div>
 </div>
 
-<% if @failed_year_visited %>
+<% if @failed_year %>
         <p class="new_trip_danger">Please include a year</p>
       <% end %>
 

@@ -20,7 +20,7 @@
   </div>
 
   <div class="column">
-    <p><img style="vertical-align:middle" src="/assets/images/calendar.jpg" alt="Calendar Icon"><label>Year: </label><%= @trip.year_visited %></p>
+    <p><img style="vertical-align:middle" src="/assets/images/calendar.jpg" alt="Calendar Icon"><label>Year: </label><%= @trip.year %></p>
   </div>
 
   <div class="column">
@@ -319,7 +319,7 @@
 
 <div class="column">
 <label>Year:</label>
-  <select name="year_visited">
+  <select name="year">
     <option disabled selected value> -- select a year -- </option>
       <% x = Time.now.year %> 
       <% for i in x.downto(1980) do %>
@@ -331,7 +331,7 @@
 </div>
 </div>
 
-<% if @failed_trip_type || @failed_country || @failed_year_visited || @failed_trip_title %>
+<% if @failed_trip_type || @failed_country || @failed_year || @failed_trip_title %>
       <p class="edit_trip_danger">Please fill out all the fields</p>
         <% end %>
 
