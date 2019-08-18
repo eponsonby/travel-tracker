@@ -9,7 +9,7 @@
 <div class="sort_menu">
   <a class="<%= if @sort == 'city' then 'selected' end%>" href="/trips?sort=city">City</a>
   <a class="<%= if @sort == 'country' then 'selected' end%>" href="/trips?sort=country">Country</a>
-  <a class="<%= if @sort == 'year' then 'selected' end%>" href="/trips?sort=year">Year</a>
+  <a class="<%= if @sort == 'year' then 'selected' end%>" href="/trips?sort=year,desc">Year</a>
   <a class="<%= if @sort == 'title' then 'selected' end%>" href="/trips?sort=title"">Title</a>
   </p>
 </div>

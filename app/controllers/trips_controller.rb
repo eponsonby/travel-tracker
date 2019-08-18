@@ -15,8 +15,6 @@ class TripsController < ApplicationController
         
         if @sort == 'country'
             @trips = @trips.order(:country)
-        elsif @sort == "year"
-            @trips = @trips.order(:year)
         elsif @sort == "year,desc"
             @trips = @trips.order('year ASC').reverse_order
         elsif @sort == "city"
