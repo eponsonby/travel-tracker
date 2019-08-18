@@ -12,8 +12,8 @@ class TripsController < ApplicationController
         else
             @trips = current_user.trips.all
         end
-
-        if @trips != nil
+        
+        if @trips != []
             if @sort == 'country'
                 @trips = @trips.order(:country)
             elsif @sort == "year,desc"
