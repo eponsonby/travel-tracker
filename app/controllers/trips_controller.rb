@@ -57,8 +57,11 @@ class TripsController < ApplicationController
             logger.info 'params'
             logger.info params
             trip = Trip.create(trip_title: params[:trip_title], country: params[:country], city: params[:city], year: params[:year], category: params[:category])
+            logger.info 'this should never show'
             current_user.trips << trip
+            logger.info 'concatted'
             current_user.save
+            logger.info 'saved?'
             redirect to '/trips'
         end
 
