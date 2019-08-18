@@ -7,22 +7,24 @@ class TripsController < ApplicationController
         @status = params[:status]
         if @status == "pasttrips"
             @trips = current_user.trips.where("category = 'Past Trip'")
-        elsif @status == "wishlist"
-            @trips = current_user.trips.where("category = 'Wishlist'")
+        elsif @status == "futuretrips"
+            @trips = current_user.trips.where("category = 'Future Trip'")
         else
             @trips = current_user.trips.all
         end
-        
-        if @sort == 'country'
-            @trips = @trips.order(:country)
-        elsif @sort == "year,desc"
-            @trips = @trips.order('year ASC').reverse_order
-        elsif @sort == "city"
-            @trips = @trips.order(:city)
-        elsif @sort == "title"
-            @trips = @trips.order(:trip_title)
-        end 
 
+        if @trips != nil
+            if @sort == 'country'
+                @trips = @trips.order(:country)
+            elsif @sort == "year,desc"
+                @trips = @trips.order('year ASC').reverse_order
+            elsif @sort == "city"
+                @trips = @trips.order(:city)
+            elsif @sort == "title"
+                @trips = @trips.order(:trip_title)
+            end 
+        else
+        end
         erb :'/trips/show_all_trips'
     end   
     
