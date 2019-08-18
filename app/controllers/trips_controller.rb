@@ -68,12 +68,14 @@ class TripsController < ApplicationController
     end
 
     get '/trips/:trip_id' do
+        authenticate
         @trip = Trip.find_by(id: params[:trip_id])
         @highlights = @trip.highlights
         erb :'trips/show_trip'
     end
 
     get '/trips/:trip_id/edit' do
+        authenticate
         @trip = Trip.find_by(id: params[:trip_id])
         @highlights = @trip.highlights
         @failed_year = false

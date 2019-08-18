@@ -20,6 +20,7 @@ class HighlightsController < ApplicationController
     end
 
     get '/trips/:trip_id/:highlight_id/edit' do
+        authenticate
         @trip = Trip.find_by(id: params[:trip_id])
         @highlight = Highlight.find_by(id: params[:highlight_id])
         @failed_place = false
@@ -42,6 +43,7 @@ class HighlightsController < ApplicationController
 
 
     delete '/trips/:trip_id/:highlight_id' do
+        authenticate
         @highlight = Highlight.find_by(id: params[:highlight_id])
         @trip = Trip.find_by(id: params[:trip_id])
         if logged_in? && @trip.highlights.include?(@highlight)
