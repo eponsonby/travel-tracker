@@ -47,7 +47,7 @@ class HighlightsController < ApplicationController
         @highlight = Highlight.find_by(id: params[:highlight_id])
         @trip = Trip.find_by(id: params[:trip_id])
         if logged_in? && @trip.highlights.include?(@highlight)
-            @highlight.destroy
+            @highlight.destroy 
             redirect "/trips/#{@trip.id}"
         else
             redirect "/trips/#{@trip.id}"
