@@ -25,7 +25,7 @@ class TripsController < ApplicationController
             end 
         else
         end
-        erb :'/trips/show_all_trips'
+        erb :'/trips/index'
     end   
     
     
