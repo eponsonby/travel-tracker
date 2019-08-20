@@ -16,6 +16,8 @@ gem "rake", "~> 12.3"
 
 gem "pg", "~> 1.1"
 
+gem "pundit", "~> 2.1"
+
 group :production do
 end
 

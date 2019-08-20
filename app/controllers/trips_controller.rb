@@ -5,12 +5,13 @@ class TripsController < ApplicationController
         @sort = params[:sort]
         @status = params[:status]
         if @status == "pasttrips"
-            @trips = current_user.trips.where("category = 'Past Trip'")
+            @trips = current_user.trips.where(category: 'Past Trip')
         elsif @status == "futuretrips"
-            @trips = current_user.trips.where("category = 'Future Trip'")
+            @trips = current_user.trips.where(category: 'Future Trip')
         else
             @trips = current_user.trips.all
         end
+
 
         if @trips != []
             if @sort == 'country'
@@ -66,6 +67,7 @@ class TripsController < ApplicationController
         authenticate
         @trip = Trip.find_by(id: params[:trip_id])
         @highlights = @trip.highlights
+        authorize @trip, :view?
         erb :'trips/show_trip'
     end
 
@@ -73,6 +75,8 @@ class TripsController < ApplicationController
         authenticate
         @trip = Trip.find_by(id: params[:trip_id])
         @highlights = @trip.highlights
+        authorize @trip, :edit?
+
         @failed_year = false
         @failed_country = false
         @failed_trip_title = false

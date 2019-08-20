@@ -13,3 +13,6 @@ end
 
 require_relative '../constants'
 require_all 'app'
+require 'pundit'
+
+

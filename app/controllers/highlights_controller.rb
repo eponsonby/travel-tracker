@@ -4,6 +4,7 @@ class HighlightsController < ApplicationController
         authenticate
         @failed_place = false
         @trip = Trip.find_by(id: params[:trip_id])
+        authorize @trip, :view?
         erb :'/highlights/new'
     end
 
@@ -23,6 +24,7 @@ class HighlightsController < ApplicationController
         authenticate
         @trip = Trip.find_by(id: params[:trip_id])
         @highlight = Highlight.find_by(id: params[:highlight_id])
+        authorize @trip, :edit?
         @failed_place = false
         erb :'highlights/edit'
     end

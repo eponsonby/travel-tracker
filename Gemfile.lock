@@ -25,6 +25,8 @@ GEM
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
+    pundit (2.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.7)
     rack-protection (2.0.5)
       rack
@@ -53,6 +55,7 @@ DEPENDENCIES
   bcrypt (~> 3.1)
   pg (~> 1.1)
   pry
+  pundit (~> 2.1)
   rake (~> 12.3)
   require_all (~> 2.0)
   shotgun (~> 0.9.2)

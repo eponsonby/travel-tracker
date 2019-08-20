@@ -1,4 +1,6 @@
+require 'pundit'
 class ApplicationController < Sinatra::Base
+    include Pundit
 
     get '/' do
         erb :index
@@ -8,6 +10,7 @@ class ApplicationController < Sinatra::Base
         status 404
         erb :oops
     end
+
 
     configure do
         set :views, 'app/views'
