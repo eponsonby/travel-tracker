@@ -17,11 +17,12 @@ class HighlightsController < ApplicationController
 
     post '/highlights' do
         @trip = Trip.find_by(id: params[:trip_id])
-        if params[:place].empty?
+        clean_params = clean_params(params)
+        if clean_params[:place].empty?
             @failed_place = true
             erb :'/highlights/new'
         else
-            highlight = Highlight.create(place: params[:place], notes: params[:notes], trip_id: params[:trip_id])
+            highlight = Highlight.create(place: clean_params[:place], notes: params[:notes], trip_id: params[:trip_id])
             @trip.highlights << highlight
             redirect to "/trips/#{@trip.id}"
         end

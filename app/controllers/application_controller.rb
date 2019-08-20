@@ -34,6 +34,18 @@ class ApplicationController < Sinatra::Base
                 redirect '/login'
             end
         end
+
+        def h(text)
+            Rack::Utils.escape_html(text)
+        end
+
+        def clean_params(params)
+            cleaned_params = params.dup
+            params.each do |k,v|
+                cleaned_params[k] = h(v)
+            end
+            cleaned_params
+        end
     end
 
 end

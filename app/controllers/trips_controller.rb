@@ -23,7 +23,6 @@ class TripsController < ApplicationController
             elsif @sort == "title"
                 @trips = @trips.order(:trip_title)
             end 
-        else
         end
         erb :'/trips/index'
     end   
@@ -67,28 +66,30 @@ class TripsController < ApplicationController
         authenticate
         @trip = Trip.find_by(id: params[:trip_id])
         @highlights = @trip.highlights
-        authorize @trip, :view?
-        erb :'trips/show_trip'
+        begin
+            authorize @trip, :view?
+        rescue
+            erb :'not_authorized'
+        else
+            erb :'trips/show_trip'
+        end
     end
 
     get '/trips/:trip_id/edit' do
         authenticate
         @trip = Trip.find_by(id: params[:trip_id])
         @highlights = @trip.highlights
-        authorize @trip, :edit?
-        # begin
-        #     authorize @trip, :edit?
-        # rescue
-        #     erb :'not_authorized'
-        # else
-        #     erb :'trips/edit'
-        # end
-
         @failed_year = false
         @failed_country = false
         @failed_trip_title = false
-        erb :'trips/edit'
 
+        begin
+            authorize @trip, :edit?
+        rescue
+            erb :'not_authorized'
+        else
+            erb :'trips/edit'
+        end
     end
 
     patch '/trips/:trip_id' do
