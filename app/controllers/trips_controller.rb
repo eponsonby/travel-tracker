@@ -76,11 +76,19 @@ class TripsController < ApplicationController
         @trip = Trip.find_by(id: params[:trip_id])
         @highlights = @trip.highlights
         authorize @trip, :edit?
+        # begin
+        #     authorize @trip, :edit?
+        # rescue
+        #     erb :'not_authorized'
+        # else
+        #     erb :'trips/edit'
+        # end
 
         @failed_year = false
         @failed_country = false
         @failed_trip_title = false
         erb :'trips/edit'
+
     end
 
     patch '/trips/:trip_id' do
