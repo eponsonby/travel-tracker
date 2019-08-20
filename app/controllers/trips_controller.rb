@@ -38,6 +38,7 @@ class TripsController < ApplicationController
     end
 
     post '/trips' do
+        authenticate
         if params[:category] == "Past Trip" && params[:year] == nil
             @failed_year = true
             erb :'/trips/new'
@@ -93,6 +94,7 @@ class TripsController < ApplicationController
     end
 
     patch '/trips/:trip_id' do
+        authenticate
         @trip = Trip.find_by(id: params[:trip_id])
         if params[:category] == "Past Trip" && params[:year] == nil
             @failed_year = true

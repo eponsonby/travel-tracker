@@ -4,18 +4,17 @@ class HighlightsController < ApplicationController
         authenticate
         @failed_place = false
         @trip = Trip.find_by(id: params[:trip_id])
-        authorize @trip, :view?
-        erb :'/highlights/new'
-        # begin
-        #     authorize @trip, :view?
-        # rescue
-        #     erb :not_authorized
-        # else
-        #     erb :'/highlights/new'
-        # end
+        begin
+            authorize @trip, :view?
+        rescue
+            erb :not_authorized
+        else
+            erb :'/highlights/new'
+        end
     end
 
     post '/highlights' do
+        authenticate
         @trip = Trip.find_by(id: params[:trip_id])
         clean_params = clean_params(params)
         if clean_params[:place].empty?
@@ -32,19 +31,18 @@ class HighlightsController < ApplicationController
         authenticate
         @trip = Trip.find_by(id: params[:trip_id])
         @highlight = Highlight.find_by(id: params[:highlight_id])
-        authorize @trip, :edit?
-        # begin
-        #     authorize @highlight, :edit?
-        # rescue
-        #     erb :'not_authorized'
-        # else
-        #     erb :'highlights/edit'
-        # end
         @failed_place = false
-        erb :'highlights/edit'
+        begin
+            authorize @highlight, :edit?
+        rescue
+            erb :'not_authorized'
+        else
+            erb :'highlights/edit'
+        end
     end
 
     patch '/trips/:trip_id/:highlight_id' do
+        authenticate
         @trip = Trip.find_by(id: params[:trip_id])
         @highlight = Highlight.find_by(id: params[:highlight_id])
         if params[:place].empty?
