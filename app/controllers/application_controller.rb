@@ -1,9 +1,9 @@
 require 'pundit'
 class ApplicationController < Sinatra::Base
     include Pundit
-    
+
     get '/' do
-        erb :index
+        erb :main
     end
 
     not_found do 
