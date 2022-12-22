@@ -1,22 +1,22 @@
 source 'https://rubygems.org'
 
-gem "sinatra", "~> 2.0"
+gem 'sinatra', '~> 3.0', '>= 3.0.5'
 
-gem "sinatra-activerecord", "~> 2.0"
+gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.26'
 
-gem "activerecord", "~> 5.2"
+gem 'activerecord', '~> 7.0', '>= 7.0.4'
 
-gem "shotgun", "~> 0.9.2"
+gem 'shotgun', '~> 0.9.2'
 
-gem "bcrypt", "~> 3.1"
+gem 'bcrypt', '~> 3.1', '>= 3.1.18'
 
-gem "require_all", "~> 2.0"
+gem 'require_all', '~> 3.0'
 
-gem "rake", "~> 12.3"
+gem 'rake', '~> 13.0', '>= 13.0.6'
 
-gem "pg", "~> 1.1"
+gem 'pg', '~> 1.4', '>= 1.4.5'
 
-gem "pundit", "~> 2.1"
+gem 'pundit', '~> 2.3'
 
 group :production do
 end
