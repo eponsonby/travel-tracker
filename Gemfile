@@ -4,7 +4,7 @@ gem 'sinatra', '~> 3.0', '>= 3.0.5'
 
 gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.26'
 
-gem 'activerecord', '~> 7.0', '>= 7.0.4'
+gem 'activerecord', '~> 7.0'
 
 gem 'shotgun', '~> 0.9.2'
 
